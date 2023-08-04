@@ -6,6 +6,15 @@ values('Rappa')
 insert into Album
 values(2, 'ImagineDragons', '1:00:00', '00/00/0000', 'Rock', 'AlbumImagineDragons', 'Lugar3', 1)
 
+insert into Musica
+values(1, 'Master of Puppets'), (2, 'Um Bom Lugar'), (3, 'Thunder')
+
+insert into Estilo
+values(2, 'Rap')
+
+insert into Usuario
+values('Matheus', 'matheus@email.com', '1234', 1)
+
 select * from Artista
 select * from Album
 select * from Musica

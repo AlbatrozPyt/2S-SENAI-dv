@@ -1,0 +1,9 @@
+--DQL
+
+USE Exercicio_1_4_Tarde;
+
+SELECT*FROM Artista
+SELECT*FROM Album
+SELECT*FROM Musica
+SELECT*FROM Estilo
+SELECT*FROM Usuario

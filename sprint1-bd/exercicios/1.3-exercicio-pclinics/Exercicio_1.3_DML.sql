@@ -1,27 +1,27 @@
 --DML
 
-USE Exercicio_1_3;
+USE Exercicio_1_3_Tarde;
 
 INSERT INTO Clinica(Endereco)
 VALUES('Rua dos Animais, nº7')
 
 INSERT INTO Dono(NomeDono)
-VALUES('Carlos'), ('Eduardo')
+VALUES('Matheus')
 
 INSERT INTO TiposPets(Tipo)
-VALUES('Roedor'), ('Pombo')
+VALUES('Cachorro')
 
 INSERT INTO Raca
-VALUES('Ratazana'), ('Calopsita')
+VALUES('Cachorro')
 
 INSERT INTO Veterinario(IdClinica, NomeVeterinario)
-VALUES(1, 'Matheus'), (1, 'Murillo')
+VALUES(1, 'Matheus')
 
-INSERT INTO Pets(IdTiposPets, IdDono, IdRaca, Nome, DataNascimento)
-VALUES(1, 1, 1, 'Ratão', '19/10/1979'), (2, 2, 2, 'Frango', '500 a.C')
+INSERT INTO Pets(IdTiposPets, IdDono, IdRaca, Nome, DataNascimento, IdVeterinario)
+VALUES(2, 2, 2, 'Pombo-2', 'Alguns minutos', 2)
 
 INSERT INTO Atendimento(IdVeterinario, IdPets, DataAtendimento)
-VALUES(1, 1, '07/08/2023'), (2, 2, '15/08/2023')
+VALUES(1, 7, '13/09')
 
 SELECT * FROM Clinica
 SELECT * FROM Dono

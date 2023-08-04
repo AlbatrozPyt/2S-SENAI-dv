@@ -1,8 +1,8 @@
 --DDL
 
-CREATE DATABASE Exercicio_1_3;
+CREATE DATABASE Exercicio_1_3_Tarde;
 
-USE Exercicio_1_3;
+USE Exercicio_1_3_Tarde;
 
 CREATE TABLE Clinica
 (
@@ -41,6 +41,7 @@ CREATE TABLE Pets
 	IdTiposPets INT FOREIGN KEY REFERENCES TiposPets(IdTiposPets),
 	IdDono INT FOREIGN KEY REFERENCES Dono(IdDono),
 	IdRaca INT FOREIGN KEY REFERENCES Raca(IdRaca),
+	IdVeterinario INT FOREIGN KEY REFERENCES Veterinario(IdVeterinario)
 	Nome VARCHAR(20) NOT NULL,
 	DataNascimento VARCHAR(20) NOT NULL
 );

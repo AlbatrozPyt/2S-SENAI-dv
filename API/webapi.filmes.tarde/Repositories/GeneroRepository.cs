@@ -17,38 +17,105 @@ namespace webapi.filmes.tarde.Repositories
 
         private string StringConexao = "Data Source = NOTE20-S15; Initial Catalog = Filmes_Tarde; User Id = sa; Pwd = Senai@134";
 
+
+
+
         public void AtualizarIdCorpo(GeneroDomain genero)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                string queryInsert = "UPDATE Genero SET Nome = @Nome WHERE IdGenero = @IdGenero";
+
+                using (SqlCommand cmd = new SqlCommand(queryInsert, con))
+                {
+                    cmd.Parameters.AddWithValue("@Nome", genero.Nome);
+                    cmd.Parameters.AddWithValue("@IdGenero", genero.IdGenero);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
+
+
+
+        // Metodo que atualiza um genero pelo ID
         public void AtualizarIdUrl(int id, GeneroDomain genero)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                string queryInsert = "UPDATE Genero SET Nome = @Nome WHERE IdGenero = @Id";
+
+                using (SqlCommand cmd = new SqlCommand(queryInsert, con))
+                {
+                    cmd.Parameters.AddWithValue("@Nome", genero.Nome);
+                    cmd.Parameters.AddWithValue("@Id", id);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
+
+
+        // Metodo que busca por ID
         public GeneroDomain BuscarPorId(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                string queryInsertById = "SELECT IdGenero, Nome FROM Genero WHERE IdGenero = @IdGenero";
+
+                SqlDataReader rdr;
+
+                using (SqlCommand cmd = new SqlCommand(queryInsertById, con))
+                {
+                    cmd.Parameters.AddWithValue("@IdGenero", id);
+
+                    con.Open();
+
+                    rdr = cmd.ExecuteReader();
+                    
+                    if(rdr.Read())
+                    {
+                        GeneroDomain genero = new GeneroDomain
+                        {
+                            IdGenero = Convert.ToInt32(rdr["IdGenero"]),
+                            Nome = rdr["Nome"].ToString()
+                        };
+
+                        return genero;
+                    }
+
+                    return null;
+                }
+            }
+    
         }
+
+
+
 
         /// <summary>
         ///  Esse metodo cadastra um novo genero
         /// </summary>
-        /// <param name="novoGenero"></param>
-        /// <exception cref="NotImplementedException">Objeto com as informacoes que serao cadastradas</exception>
         public void Cadastrar(GeneroDomain novoGenero)
         {
             // Declara o SqlConnection passando a string conexao
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
                 // Declara a query que sera executada
-                string queryInsert = "INSERT INTO Genero(Nome) VALUES('" + novoGenero.Nome + "')";
+                string queryInsert = "INSERT INTO Genero(Nome) VALUES(@Nome)";
 
 
                 // Declara o SqlCommand
                 using (SqlCommand cmd = new SqlCommand(queryInsert, con))
                 {
+                    cmd.Parameters.AddWithValue("@Nome", novoGenero.Nome);
+
                     // Abre a conexao com o banco de dados
                     con.Open();
 
@@ -58,10 +125,29 @@ namespace webapi.filmes.tarde.Repositories
             }
         }
 
+
+
+
         public void Deletar(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+             
+                string queryInsert = "DELETE FROM Genero WHERE IdGenero = @Id";
+
+                using (SqlCommand cmd = new SqlCommand(queryInsert, con))
+                {
+                    cmd.Parameters.AddWithValue("@Id", id);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
+
+
+
 
         /// <summary>
         /// Listar todos os objetos do tipo genero

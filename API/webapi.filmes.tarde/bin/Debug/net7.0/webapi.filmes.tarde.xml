@@ -4,6 +4,52 @@
         <name>webapi.filmes.tarde</name>
     </assembly>
     <members>
+        <member name="T:webapi.filmes.tarde.Controllers.FilmesController">
+            <summary>
+            Define que a rota de uma requsicao sera no seguinte formato:
+            dominio/api/nomeController
+            exemplo: http://localhost:5000/api/Genero
+            </summary>
+        </member>
+        <member name="M:webapi.filmes.tarde.Controllers.FilmesController.Get">
+            <summary>
+            EndPoint que acessa o metodo de listar os filmes
+            </summary>
+            <returns>Lista de filmes e status code</returns>
+        </member>
+        <member name="M:webapi.filmes.tarde.Controllers.FilmesController.GetId(System.Int32)">
+            <summary>
+            EndPoint para acessar o metodo de Buscar por ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.filmes.tarde.Controllers.FilmesController.PutIdCorpo(webapi.filmes.tarde.Domains.FilmeDomain)">
+            <summary>
+            EndPoint que substitui um filme pelo corpo
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.filmes.tarde.Controllers.FilmesController.PutId(System.Int32,webapi.filmes.tarde.Domains.FilmeDomain)">
+            <summary>
+            EndPoint que substitui um genero pelo ID 
+            </summary>
+            <param name="id">ID do objeto que sera substituido</param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.filmes.tarde.Controllers.FilmesController.Post(webapi.filmes.tarde.Domains.FilmeDomain)">
+            <summary>
+            EndPoint que acessa o metodo cadastrar filmes
+            </summary>
+            <returns>Cadastro de filmes e status code</returns>
+        </member>
+        <member name="M:webapi.filmes.tarde.Controllers.FilmesController.Delete(System.Int32)">
+            <summary>
+            EndPoint que acessa o metodo para deletar pelo ID
+            </summary>
+            <param name="id">Id que sera deleltado</param>
+            <returns></returns>
+        </member>
         <member name="T:webapi.filmes.tarde.Controllers.GenerosController">
             <summary>
             Define que a rota de uma requsicao sera no seguinte formato:
@@ -153,6 +199,16 @@
             Deletar um genero existente
             </summary>
             <param name="id">Id do objeto que sera deletado</param>
+        </member>
+        <member name="F:webapi.filmes.tarde.Repositories.FilmeRepository.StringConexao">
+            <summary>
+            String de conexao com o banco de dados, que recebe os seguintes parametros:
+            Data Source: Nome do servidor do banco
+            Initial Catalog: Nome do banco de dados
+            Autenticacao:
+                - Windons: Integrated  Security True
+                - Sql Server: User Id = sa; Pwd = senha;
+            </summary>
         </member>
         <member name="F:webapi.filmes.tarde.Repositories.GeneroRepository.StringConexao">
             <summary>

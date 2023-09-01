@@ -108,6 +108,14 @@
             <param name="id">Id que sera deleltado</param>
             <returns></returns>
         </member>
+        <member name="M:webapi.filmes.tarde.Controllers.UsuariosController.LoginUser(System.String,System.String)">
+            <summary>
+            Endpoint que traz o metodo Login do Usuario
+            </summary>
+            <param name="Senha"></param>
+            <param name="Email"></param>
+            <returns></returns>
+        </member>
         <member name="T:webapi.filmes.tarde.Domains.FilmeDomain">
             <summary>
             Classe que representa a entidade(tabela) Filme

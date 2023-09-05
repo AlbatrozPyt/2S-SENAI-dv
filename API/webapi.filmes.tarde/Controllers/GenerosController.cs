@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Drawing;
 using webapi.filmes.tarde.Domains;
@@ -25,6 +26,8 @@ namespace webapi.filmes.tarde.Controllers
     /// </summary>
     [Produces("application/json")]
 
+    [Authorize] // Precisa estar logado para acessar a rota
+
     public class GenerosController : ControllerBase
     {
         /// <summary>
@@ -49,6 +52,7 @@ namespace webapi.filmes.tarde.Controllers
         /// </summary>
         /// <returns>Lista de generos e status code</returns>
         [HttpGet]
+        
         public IActionResult Get()
         {
             try
@@ -101,6 +105,7 @@ namespace webapi.filmes.tarde.Controllers
         /// </summary>
         /// <returns>Cadastro de generos e status code</returns>
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Post(GeneroDomain novoGenero)
         {
             try

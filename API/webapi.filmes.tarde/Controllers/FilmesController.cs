@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.filmes.tarde.Domains;
 using webapi.filmes.tarde.Interfaces;
@@ -6,6 +7,8 @@ using webapi.filmes.tarde.Repositories;
 
 namespace webapi.filmes.tarde.Controllers
 {
+   
+
     /// <summary>
     /// Define que a rota de uma requsicao sera no seguinte formato:
     /// dominio/api/nomeController
@@ -24,6 +27,7 @@ namespace webapi.filmes.tarde.Controllers
     /// </summary>
     [Produces("application/json")]
 
+    [Authorize] // Precisa estar logado para acessar a rota
 
     public class FilmesController : ControllerBase
     {
@@ -147,6 +151,7 @@ namespace webapi.filmes.tarde.Controllers
         /// </summary>
         /// <returns>Cadastro de filmes e status code</returns>
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Post(FilmeDomain novoFilme)
         {
             try

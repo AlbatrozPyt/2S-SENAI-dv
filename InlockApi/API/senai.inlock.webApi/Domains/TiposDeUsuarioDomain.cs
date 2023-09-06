@@ -4,7 +4,7 @@
     {
         public int IdTiposDeUsuario;
 
-        public int Titulo { get; set; }
+        public string Titulo { get; set; }
 
     }
 }

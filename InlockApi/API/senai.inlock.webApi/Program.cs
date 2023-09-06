@@ -3,6 +3,8 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllers();
+
 // Adicione o gerador do Swagger à coleção de serviços no Program.cs
 builder.Services.AddSwaggerGen(options =>
 {
@@ -19,11 +21,10 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 
-
-    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+    // Configura o Swagger para criar o arquivo XML
+    // var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    // options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
-
 
 var app = builder.Build();
 

@@ -4,6 +4,10 @@ SELECT * FROM TiposUsuario;
 
 SELECT * FROM Usuario;
 
+SELECT TiposUsuario.Titulo, Usuario.Email FROM Usuario 
+INNER JOIN TiposUsuario ON TiposUsuario.IdTipoUsuario = Usuario.IdTipoUsuario
+WHERE Usuario.Email = 'admin@admin.com' AND  Usuario.Senha = 'admin'
+
 SELECT * FROM Estudio;
 
 SELECT * FROM Jogo;

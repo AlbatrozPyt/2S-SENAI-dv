@@ -6,16 +6,16 @@ namespace senai.inlock.webApi.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
-        private string StringConexao = "Data Source = NOTE20-S15; Initial Catalog = Filmes_Tarde; User Id = sa; Pwd = Senai@134";
+        private string StringConexao = "Data Source = DESKTOP-SF7B080; Initial Catalog = inlock_games; User Id = sa; Pwd = 1234";
 
         public UsuarioDomain Login(string email, string senha)
         {
-            UsuarioDomain user = new UsuarioDomain();
-            TiposDeUsuarioDomain tipo = new TiposDeUsuarioDomain();
+            UsuarioDomain user = null;
+            TiposDeUsuarioDomain tipo = null;
 
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
-                string queryLogin = "SELECT Usuario.IdUsuario, Usuario.Email FROM Usuario WHERE Usuario.Email = @Email AND  Usuario.Senha = @Senha";
+                string queryLogin = "SELECT Usuario.IdUsuario, Usuario.IdTipoUsuario, TiposUsuario.Titulo, Usuario.Email FROM Usuario LEFT JOIN TiposUsuario ON TiposUsuario.IdTipoUsuario = Usuario.IdTipoUsuario WHERE Usuario.Email = @Email AND Usuario.Senha = @Senha";
 
                 SqlDataReader rdr;
 
@@ -33,9 +33,17 @@ namespace senai.inlock.webApi.Repositories
                         user = new UsuarioDomain()
                         {
                             Email = rdr["Email"].ToString(),
-                            Senha = rdr["Senha"].ToString(),
-                            IdUsuario = Convert.ToInt32(rdr["IdUsuario"])
+                            IdUsuario = Convert.ToInt32(rdr["IdUsuario"]),
+                            IdTiposDeUsuario = Convert.ToInt32(rdr[1])  
                         };
+
+                        tipo = new TiposDeUsuarioDomain()
+                        {
+                            IdTiposDeUsuario = Convert.ToInt32(rdr[0]),
+                            Titulo = rdr[2].ToString()
+                        };
+
+                        user.TiposDeUsuario = tipo;
                     }
                 }
             }

@@ -13,7 +13,7 @@ namespace senai.inlock.webApi.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Produces("application/json")]
-    //[Authorize]
+    [Authorize]
 
     public class EstudioController : ControllerBase
     {

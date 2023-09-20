@@ -7,5 +7,7 @@ namespace senai.inlock.webApi.Interfaces
         void Cadastrar(EstudioDomain estudio);
 
         List<EstudioDomain> ListarEstudios();
+
+        List<EstudioDomain> ListarJogos(int id);
     }
 }

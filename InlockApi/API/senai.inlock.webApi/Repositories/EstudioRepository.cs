@@ -31,9 +31,9 @@ namespace senai.inlock.webApi.Repositories
         public List<EstudioDomain> ListarEstudios()
         {
             EstudioDomain estudio = new EstudioDomain();
-            JogoDomain jogo = new JogoDomain();
+
             List<EstudioDomain> listaEstudios = new List<EstudioDomain>();
-            List<JogoDomain> listaJogos = new List<JogoDomain>();
+
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
                 string query = "SELECT Estudio.IdEstudio, Estudio.Nome, Jogo.Nome AS jogo FROM Estudio INNER JOIN Jogo ON Jogo.IdEstudio = Estudio.IdEstudio";
@@ -57,21 +57,77 @@ namespace senai.inlock.webApi.Repositories
                             Estudio = rdr["Nome"].ToString()
                         };
 
-                        jogo = new JogoDomain()
-                        {
-                            Nome = rdr["jogo"].ToString(),
-                            IdEstudio = Convert.ToInt32(rdr["IdEstudio"])
-                        };
-
-                        
-                        estudio.Jogo = jogo;
-
                         listaEstudios.Add(estudio);
-
                     }
                 }
             }
             return listaEstudios;
+        }
+
+        public List<EstudioDomain> ListarJogos(int id)
+        {
+            EstudioDomain estudio = new EstudioDomain();
+            JogoDomain jogo = new JogoDomain();
+            List<EstudioDomain> list = new List<EstudioDomain>();
+
+            using (SqlConnection conE = new SqlConnection(StringConexao))
+            {
+                string queryEstudios = "SELECT * FROM Estudio";
+                conE.Open();
+                SqlDataReader rdr;
+
+                using (SqlCommand cmd = new SqlCommand(queryEstudios, conE))
+                {
+                    rdr = cmd.ExecuteReader();
+
+                    List<JogoDomain> listaJogos = new List<JogoDomain>();
+
+                    while (rdr.Read())
+                    {
+                        estudio = new EstudioDomain()
+                        {
+                            IdEstudio = Convert.ToInt32(rdr["IdEstudio"]),
+                            Estudio = rdr["Nome"].ToString()
+                        };
+
+                        using (SqlConnection conJ = new SqlConnection(StringConexao))
+                        {
+                            string queryJogos = "SELECT * FROM Jogo WHERE Jogo.IdEstudio = @Id";
+                            conJ.Open();
+                            SqlDataReader rdrJ;
+
+                            using (SqlCommand cmdJ = new SqlCommand(queryJogos, conJ))
+                            {
+                                cmdJ.Parameters.AddWithValue("@Id", id);
+
+                                rdrJ = cmdJ.ExecuteReader();
+
+                                while (rdrJ.Read())
+                                {
+                                    jogo = new JogoDomain()
+                                    {
+                                        IdEstudio = Convert.ToInt32(rdrJ["IdEstudio"]),
+                                        IdJogo = Convert.ToInt32(rdrJ["IdJogo"]),
+                                        Nome = rdrJ["Nome"].ToString(),
+                                        Descricao = rdrJ["Descricao"].ToString(),
+                                        DataLancamento = Convert.ToDateTime(rdrJ["DataLancamento"]),
+                                        Valor = Convert.ToDouble(rdrJ["Valor"])
+                                    };
+
+                                    listaJogos.Add(jogo);
+                                }
+                            }
+
+                        }
+
+                    }
+
+                    estudio.ListaJogos = listaJogos;
+                    list.Add(estudio);
+                }
+                return list;
+
+            }
         }
     }
 }

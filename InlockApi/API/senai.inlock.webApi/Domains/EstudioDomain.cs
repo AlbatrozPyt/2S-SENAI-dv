@@ -4,6 +4,7 @@
     {
         public int IdEstudio { get; set; }
         public string Estudio { get; set; }
-        public JogoDomain Jogo {get; set;}
+        public List<JogoDomain> ListaJogos { get; set; }
+
     }
 }

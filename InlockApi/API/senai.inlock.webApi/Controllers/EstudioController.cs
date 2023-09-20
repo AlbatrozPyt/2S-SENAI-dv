@@ -17,7 +17,7 @@ namespace senai.inlock.webApi.Controllers
 
     public class EstudioController : ControllerBase
     {
-        private IEstudioRepository _estudioRepository {get; set;}
+        private IEstudioRepository _estudioRepository { get; set; }
 
         public EstudioController()
         {
@@ -38,6 +38,21 @@ namespace senai.inlock.webApi.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetGames(int id)
+        {
+            try
+            {
+                List<EstudioDomain> lista = _estudioRepository.ListarJogos(id);
+                return Ok(lista);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
+
+
         [HttpPost]
         [Authorize(Roles = "Administrador")]
         public IActionResult Post(EstudioDomain estudio)
@@ -48,7 +63,7 @@ namespace senai.inlock.webApi.Controllers
                 return Ok(estudio);
             }
             catch (Exception erro)
-            { 
+            {
                 return BadRequest(erro.Message);
             }
         }

@@ -10,37 +10,39 @@ namespace webapi.event_tarde.Controllers
     [ApiController]
     [Produces("application/json")]
 
-    public class EventoController : ControllerBase
+    public class InstituicaoController : ControllerBase
     {
-        private IEventoRepository _eventoRepository;
+        private IInstituicaoRepository _instituicaoRepository;
 
-        public EventoController()
+        public InstituicaoController()
         {
-            _eventoRepository = new EventoRepository();
+            _instituicaoRepository = new InstituicaoRepository();
         }
 
-        [HttpPost("CadastrarEvento")]
-        public IActionResult Post(Evento evento)
+        [HttpPost("CadastrarInstituicao")]
+        public IActionResult Post(Instituicao instituicao)
         {
             try
             {
-                _eventoRepository.Cadastrar(evento);
+                _instituicaoRepository.Cadastrar(instituicao);
 
                 return Ok();
             }
             catch (Exception e)
             {
+
                 return BadRequest(e.Message);
             }
         }
 
-        [HttpGet("ListarEventos")]
+        [HttpGet("ListarInstituicoes")]
         public IActionResult Get()
         {
             try
             {
-                List<Evento> eventos = _eventoRepository.Listar();
-                return Ok(eventos);
+                List<Instituicao> instituicoes = _instituicaoRepository.Listar();
+
+                return Ok(instituicoes);
             }
             catch (Exception e)
             {
@@ -48,17 +50,18 @@ namespace webapi.event_tarde.Controllers
             }
         }
 
-        [HttpDelete("DeletarEvento")]
+        [HttpDelete("DeletarInstituicao")]
         public IActionResult Delete(Guid id)
         {
             try
             {
-                _eventoRepository.Deletar(id);
+                _instituicaoRepository.Deletar(id);
+
                 return Ok();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return BadRequest(e.Message);
+                return BadRequest();
             }
         }
 
@@ -67,28 +70,29 @@ namespace webapi.event_tarde.Controllers
         {
             try
             {
-                Evento evento = _eventoRepository.BuscarPorId(id);
-                return Ok(evento);
+                Instituicao instituicao = _instituicaoRepository.BuscarPorId(id);
+
+                return Ok(instituicao);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }        
+        }
+
+        [HttpPut("AtualizarInstituicao")]
+        public IActionResult Put(Guid id, Instituicao instituicao)
+        {
+            try
+            {
+                _instituicaoRepository.Atualizar(id, instituicao);
+
+                return Ok();
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
         }
-
-        [HttpPut("AtualizarEvento")]
-        public IActionResult Put(Guid id, Evento evento)
-        {
-            try
-            {
-                _eventoRepository.Atualizar(id, evento);
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);   
-            }
-        }
-
     }
 }

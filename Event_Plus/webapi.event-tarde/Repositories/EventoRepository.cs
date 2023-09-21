@@ -15,12 +15,26 @@ namespace webapi.event_tarde.Repositories
 
         public void Atualizar(Guid id, Evento evento)
         {
-            throw new NotImplementedException();
+            Evento eventoAntigo = ctx.Evento.FirstOrDefault(x => x.IdEvento == id)!;
+
+            if (eventoAntigo != null)
+            {
+                eventoAntigo.IdInstituicao = evento.IdInstituicao;
+                eventoAntigo.IdTipoEvento = evento.IdTipoEvento;
+                eventoAntigo.DataEvento = evento.DataEvento;
+                eventoAntigo.Descricao = evento.Descricao;
+                eventoAntigo.NomeEvento = evento.NomeEvento;
+            }
+
+            ctx.Evento.Update(eventoAntigo!);
+            ctx.SaveChanges();
         }
 
-        public TipoEvento BuscarPorId(Guid id)
+        public Evento BuscarPorId(Guid id)
         {
-            throw new NotImplementedException();
+            List<Evento> eventos = ctx.Evento.ToList();
+            Evento evento = eventos.FirstOrDefault(x => x.IdEvento == id);
+            return evento!;
         }
 
         public void Cadastrar(Evento evento)
@@ -31,12 +45,15 @@ namespace webapi.event_tarde.Repositories
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            Evento evento = ctx.Evento.FirstOrDefault(x => x.IdEvento == id)!;
+            ctx.Evento.Remove(evento);
+            ctx.SaveChanges();
         }
 
-        public List<TipoEvento> Listar()
+        public List<Evento> Listar()
         {
-            throw new NotImplementedException();
+            List<Evento> eventos = ctx.Evento.ToList();
+            return eventos;
         }
     }
 }

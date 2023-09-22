@@ -8,7 +8,7 @@ namespace webapi.event_tarde.Repositories
     {
         private readonly EventContext ctx;
 
-        ComentarioRepository()
+        public ComentarioRepository()
         {
             ctx = new EventContext();
         }
@@ -21,12 +21,16 @@ namespace webapi.event_tarde.Repositories
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            ComentarioEvento comDelete = ctx.ComentarioEvento.FirstOrDefault(x => x.IdComentarioEvento == id)!;
+            ctx.ComentarioEvento.Remove(comDelete);
+            ctx.SaveChanges();
         }
 
         public List<ComentarioEvento> ListarComentariosUsuario(Guid id)
         {
-            throw new NotImplementedException();
+            List<ComentarioEvento> comentarios = ctx.ComentarioEvento.Where(x => x.IdUsuario == id).ToList();
+
+            return comentarios;
         }
     }
 }

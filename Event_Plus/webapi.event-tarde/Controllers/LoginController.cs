@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -13,7 +14,6 @@ namespace webapi.event_tarde.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-
 
     public class LoginController : ControllerBase
     {
@@ -52,9 +52,9 @@ namespace webapi.event_tarde.Controllers
 
                 var token = new JwtSecurityToken
                 (
-                    issuer: "webapi.EventPlus",
+                    issuer: "webapi.event-tarde",
 
-                    audience: "webapi.EventPlus",
+                    audience: "webapi.event-tarde",
                 
                     claims: claims,
                   

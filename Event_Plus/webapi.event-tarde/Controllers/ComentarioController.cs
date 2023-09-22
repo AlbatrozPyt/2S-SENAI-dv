@@ -12,21 +12,23 @@ namespace webapi.event_tarde.Controllers
     [Produces("application/json")]
     [Authorize]
 
-    public class PresencaEventoController : ControllerBase
+    public class ComentarioController : ControllerBase
     {
-        private IPresencaEventoRepository _presencaEventoRepository;
+        private IComentarioRepository _comentarioRepository;
 
-        public PresencaEventoController()
+        public ComentarioController()
         {
-            _presencaEventoRepository = new PresencaEventoRepository();
+            _comentarioRepository = new ComentarioRepository();
         }
 
-        [HttpPost("CadastarPresenca")]
-        public IActionResult Post(PresencaEvento presenca)
+
+        [HttpPost]
+        public IActionResult Post(ComentarioEvento com)
         {
             try
             {
-                _presencaEventoRepository.Cadastrar(presenca);
+                _comentarioRepository.Comentario(com);
+
                 return Ok();
             }
             catch (Exception e)
@@ -35,13 +37,14 @@ namespace webapi.event_tarde.Controllers
             }
         }
 
-        [HttpGet("PresencasUsuario")]
+        [HttpGet]
         public IActionResult Get(Guid id)
         {
             try
             {
-                List<PresencaEvento> p = _presencaEventoRepository.ListarPresencas(id);
-                return Ok(p);
+                List<ComentarioEvento> comentarios = _comentarioRepository.ListarComentariosUsuario(id);
+
+                return Ok(comentarios);
             }
             catch (Exception e)
             {
@@ -49,12 +52,13 @@ namespace webapi.event_tarde.Controllers
             }
         }
 
-        [HttpDelete("DeletarPresenca")]
+        [HttpDelete]
         public IActionResult Delete(Guid id) 
         {
             try
             {
-                _presencaEventoRepository.Deletar(id);
+                _comentarioRepository.Deletar(id);
+
                 return Ok();
             }
             catch (Exception e)
@@ -62,5 +66,6 @@ namespace webapi.event_tarde.Controllers
                 return BadRequest(e.Message);
             }
         }
+
     }
 }

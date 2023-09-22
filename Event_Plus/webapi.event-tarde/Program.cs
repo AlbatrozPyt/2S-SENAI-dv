@@ -34,10 +34,10 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.FromMinutes(5),
 
         // De onde esta vindo (issuer)
-        ValidIssuer = "webapi.EventPlus",
+        ValidIssuer = "webapi.event-tarde",
 
         // Para onde esta indo (audience)
-        ValidAudience = "webapi.EventPlus"
+        ValidAudience = "webapi.event-tarde"
     };
 });
 
@@ -106,9 +106,9 @@ app.UseSwaggerUI(options =>
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.MapControllers();
 

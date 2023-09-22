@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.event_tarde.Domains;
 using webapi.event_tarde.Interfaces;
@@ -9,6 +10,7 @@ namespace webapi.event_tarde.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    [Authorize]
 
     public class EventoController : ControllerBase
     {

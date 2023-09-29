@@ -1,0 +1,8 @@
+{
+  "cnpj": "50036526000108",
+  "nomeFantasia": "Health Clinic - SP",
+  "razaoSocial": "Health Clinic",
+  "horarioAbertura": "05:00",
+  "horarioFechamento": "04:00",
+  "endereco": "Rua lapada, n500"
+}

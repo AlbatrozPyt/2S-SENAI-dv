@@ -32,11 +32,11 @@ namespace web_api_health_clinic.Repositories
         {
             Paciente paciente = ctx.Pacientes!.Select(x => new Paciente
             {
-               IdPaciente = x.IdPaciente,
-               IdUsuario = x.IdUsuario,
-               DataNascimento = x.DataNascimento,
-               Descricao = x.Descricao,
-               NomePaciente = x.NomePaciente,
+                IdPaciente = x.IdPaciente,
+                IdUsuario = x.IdUsuario,
+                DataNascimento = x.DataNascimento,
+                Descricao = x.Descricao,
+                NomePaciente = x.NomePaciente,
 
                 Usuario = new Usuario()
                 {
@@ -46,7 +46,7 @@ namespace web_api_health_clinic.Repositories
                     Nome = x.Usuario.Nome
                 },
 
-            }).FirstOrDefault(x => x.IdUsuario == id)!;
+            }).FirstOrDefault(x => x.IdPaciente == id)!;
 
 
 
@@ -55,22 +55,45 @@ namespace web_api_health_clinic.Repositories
 
         public void Cadastrar(Paciente p)
         {
-            throw new NotImplementedException();
+            ctx.Pacientes!.Add(p);
+            ctx.SaveChanges();
         }
 
         public List<Consulta> Consultas(Guid id)
         {
-            throw new NotImplementedException();
+            List<Consulta> consultas = ctx.Consultas!.Where(x => x.IdPaciente == id).ToList();
+            return consultas;
         }
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            Paciente paciente = ctx.Pacientes!.FirstOrDefault(x => x.IdPaciente == id)!;
+            ctx.Pacientes.Remove(paciente);
+            ctx.SaveChanges();
         }
 
         public List<Paciente> ListarPacientes()
         {
-            throw new NotImplementedException();
+            List<Paciente> pacientes = ctx.Pacientes!.Select(x => new Paciente
+            {
+                IdPaciente = x.IdPaciente,
+                IdUsuario = x.IdUsuario,
+                NomePaciente = x.NomePaciente,
+                DataNascimento = x.DataNascimento,
+                Descricao = x.Descricao,
+
+                Usuario = new Usuario()
+                {
+                    IdUsuario = x.Usuario!.IdUsuario,
+                    IdTiposUsuario = x.Usuario.IdTiposUsuario,
+                    Email = x.Usuario.Email,
+                    Nome = x.Usuario.Nome
+                }
+
+            }).ToList();
+
+            return pacientes;
+
         }
     }
 }

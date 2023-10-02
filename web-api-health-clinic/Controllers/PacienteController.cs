@@ -10,24 +10,24 @@ namespace web_api_health_clinic.Controllers
     [ApiController]
     [Produces("application/json")]
 
-    public class MedicoController : ControllerBase
+    public class PacienteController : ControllerBase
     {
-        private IMedicoRepository _medicoRepository;
+        private IPacienteRepository _pacienteRepository;
 
-        public MedicoController()
-        {
-            _medicoRepository = new MedicoRepository();
+        public PacienteController() 
+        { 
+            _pacienteRepository = new PacienteRepository();
         }
 
 
-        [HttpGet("ListarMedicos")]
+        [HttpGet("ListarPacientes")]
         public IActionResult Get()
         {
             try
             {
-                List<Medico> medicos = _medicoRepository.ListarMedicos();
+                List<Paciente> pacientes = _pacienteRepository.ListarPacientes();
 
-                return StatusCode(200, medicos);
+                return StatusCode(200, pacientes);
             }
             catch (Exception e)
             {
@@ -36,12 +36,12 @@ namespace web_api_health_clinic.Controllers
         }
 
 
-        [HttpPost("CadastrarMedico")]
-        public IActionResult Post(Medico medico) 
+        [HttpPost("CadastrarPacientes")]
+        public IActionResult Post(Paciente paciente)
         {
             try
             {
-                _medicoRepository.Cadastrar(medico);
+                _pacienteRepository.Cadastrar(paciente);
                 return StatusCode(200);
             }
             catch (Exception e)
@@ -52,12 +52,12 @@ namespace web_api_health_clinic.Controllers
 
 
         [HttpGet("BuscarPorId")]
-        public IActionResult GetById(Guid id) 
+        public IActionResult GetById(Guid id)
         {
             try
             {
-                Medico medico = _medicoRepository.BuscarPorId(id);
-                return StatusCode(200, medico);
+                Paciente paciente = _pacienteRepository.BuscarPorId(id);
+                return StatusCode(200, paciente);
             }
             catch (Exception e)
             {
@@ -66,12 +66,12 @@ namespace web_api_health_clinic.Controllers
         }
 
 
-        [HttpPut("AtualizarMedico")]
-        public IActionResult Put(Medico medico, Guid id) 
+        [HttpPut("AtualizarPaciente")]
+        public IActionResult Put(Paciente paciente, Guid id)
         {
             try
             {
-                _medicoRepository.Atualizar(medico, id);
+                _pacienteRepository.Atualizar(paciente, id);
                 return StatusCode(201);
             }
             catch (Exception e)
@@ -81,12 +81,12 @@ namespace web_api_health_clinic.Controllers
         }
 
 
-        [HttpDelete("DeletarMedico")]
-        public IActionResult Delete(Guid id) 
+        [HttpDelete("DeletarPaciente")]
+        public IActionResult Delete(Guid id)
         {
             try
             {
-                _medicoRepository.Deletar(id);
+                _pacienteRepository.Deletar(id);
                 return StatusCode(200);
             }
             catch (Exception e)
@@ -97,11 +97,11 @@ namespace web_api_health_clinic.Controllers
 
 
         [HttpGet("ListarConsultasRelacionadas")]
-        public IActionResult GetConsultas(Guid id) 
+        public IActionResult GetConsultas(Guid id)
         {
             try
             {
-                List<Consulta> consultas = _medicoRepository.Consultas(id);
+                List<Consulta> consultas = _pacienteRepository.Consultas(id);
                 return StatusCode(200, consultas);
             }
             catch (Exception e)

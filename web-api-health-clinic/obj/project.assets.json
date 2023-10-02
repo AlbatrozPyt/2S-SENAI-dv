@@ -3344,11 +3344,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\24004134870\\Desktop\\web-api-health-clinic\\web-api-health-clinic.csproj",
+      "projectUniqueName": "C:\\Users\\24004134870\\Desktop\\2S-SENAI-dv\\web-api-health-clinic\\web-api-health-clinic.csproj",
       "projectName": "web-api-health-clinic",
-      "projectPath": "C:\\Users\\24004134870\\Desktop\\web-api-health-clinic\\web-api-health-clinic.csproj",
+      "projectPath": "C:\\Users\\24004134870\\Desktop\\2S-SENAI-dv\\web-api-health-clinic\\web-api-health-clinic.csproj",
       "packagesPath": "C:\\Users\\24004134870\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\24004134870\\Desktop\\web-api-health-clinic\\obj\\",
+      "outputPath": "C:\\Users\\24004134870\\Desktop\\2S-SENAI-dv\\web-api-health-clinic\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\24004134870\\AppData\\Roaming\\NuGet\\NuGet.Config",

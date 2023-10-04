@@ -19,6 +19,10 @@ namespace web_api_health_clinic.Controllers
             _consultaRepository = new ConsultaRepository();
         }
 
+        /// <summary>
+        /// Listar todas as consultas
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("ListarConsultas")]
         public IActionResult Get()
         {
@@ -34,7 +38,11 @@ namespace web_api_health_clinic.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Cadastrar uma nova consulta
+        /// </summary>
+        /// <param name="consulta">Consulta</param>
+        /// <returns></returns>
         [HttpPost("CadastrarConsulta")]
         public IActionResult Post(Consulta consulta)
         {
@@ -49,7 +57,11 @@ namespace web_api_health_clinic.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Busca consulta pelo id
+        /// </summary>
+        /// <param name="id">Id da consulta</param>
+        /// <returns></returns>
         [HttpGet("BuscarPorId")]
         public IActionResult GetById(Guid id)
         {
@@ -65,6 +77,12 @@ namespace web_api_health_clinic.Controllers
         }
 
 
+        /// <summary>
+        /// Atualizar consulta existente
+        /// </summary>
+        /// <param name="consulta">Nova consulta</param>
+        /// <param name="id">Id da conslta</param>
+        /// <returns></returns>
         [HttpPut("AtualizarConsulta")]
         public IActionResult Put(Consulta consulta, Guid id)
         {
@@ -79,7 +97,11 @@ namespace web_api_health_clinic.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Excluir consulta
+        /// </summary>
+        /// <param name="id">Id da consulta</param>
+        /// <returns></returns>
         [HttpDelete("DeletarConsulta")]
         public IActionResult Delete(Guid id)
         {

@@ -19,7 +19,10 @@ namespace web_api_health_clinic.Controllers
             _medicoRepository = new MedicoRepository();
         }
 
-
+        /// <summary>
+        /// Listar todos os medicos
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("ListarMedicos")]
         public IActionResult Get()
         {
@@ -35,7 +38,11 @@ namespace web_api_health_clinic.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Cadastro de medicos
+        /// </summary>
+        /// <param name="medico">Medico</param>
+        /// <returns></returns>
         [HttpPost("CadastrarMedico")]
         public IActionResult Post(Medico medico) 
         {
@@ -50,7 +57,11 @@ namespace web_api_health_clinic.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Buscar medico por id
+        /// </summary>
+        /// <param name="id">Id do medico</param>
+        /// <returns></returns>
         [HttpGet("BuscarPorId")]
         public IActionResult GetById(Guid id) 
         {
@@ -65,7 +76,12 @@ namespace web_api_health_clinic.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Atualizar medico existente
+        /// </summary>
+        /// <param name="medico">medico novo</param>
+        /// <param name="id">id do medico</param>
+        /// <returns></returns>
         [HttpPut("AtualizarMedico")]
         public IActionResult Put(Medico medico, Guid id) 
         {
@@ -80,7 +96,11 @@ namespace web_api_health_clinic.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Deletar medico pelo id
+        /// </summary>
+        /// <param name="id">id do medico</param>
+        /// <returns></returns>
         [HttpDelete("DeletarMedico")]
         public IActionResult Delete(Guid id) 
         {
@@ -95,7 +115,11 @@ namespace web_api_health_clinic.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Listar todas as consultas do medico
+        /// </summary>
+        /// <param name="id">Id do medico</param>
+        /// <returns></returns>
         [HttpGet("ListarConsultasRelacionadas")]
         public IActionResult GetConsultas(Guid id) 
         {

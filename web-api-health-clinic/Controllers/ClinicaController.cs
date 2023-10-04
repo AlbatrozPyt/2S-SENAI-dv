@@ -19,6 +19,12 @@ namespace web_api_health_clinic.Controllers
             _clinicaRepository = new ClinicaRepository();
         }
 
+
+        /// <summary>
+        /// Cadastro de clinicas
+        /// </summary>
+        /// <param name="c">Clinica</param>
+        /// <returns></returns>
         [HttpPost("CadastrarClinica")]
         public IActionResult Post(Clinica c)
         {
@@ -34,6 +40,11 @@ namespace web_api_health_clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Metodo para deletar clinicas
+        /// </summary>
+        /// <param name="id">Id da clinica</param>
+        /// <returns></returns>
         [HttpDelete("DeletarClinica")]
         public IActionResult Delete(Guid id) 
         {
@@ -48,6 +59,10 @@ namespace web_api_health_clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Lista de clinicas cadastradas
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("ListarClinicas")]
         public IActionResult Get() 
         {
@@ -62,6 +77,12 @@ namespace web_api_health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Buscar clinicas por id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("BuscarPorId")]
         public IActionResult GetById(Guid id) 
         {
@@ -77,6 +98,13 @@ namespace web_api_health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Atualiza clinicas existentes
+        /// </summary>
+        /// <param name="clinica">A clinica atualizada</param>
+        /// <param name="id">Id da clinica</param>
+        /// <returns></returns>
         [HttpPut("AtualizarClinica")]
         public IActionResult Put(Clinica clinica, Guid id)
         {

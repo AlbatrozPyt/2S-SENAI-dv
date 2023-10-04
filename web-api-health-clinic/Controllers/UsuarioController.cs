@@ -19,7 +19,12 @@ namespace web_api_health_clinic.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
-        [HttpPost]
+        /// <summary>
+        /// Cadastro de usuarios
+        /// </summary>
+        /// <param name="user">usuario</param>
+        /// <returns></returns>
+        [HttpPost("CadastrarUsuario")]
         public IActionResult Post(Usuario user)
         {
             try
@@ -34,6 +39,11 @@ namespace web_api_health_clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Deletar usuarios pelo id
+        /// </summary>
+        /// <param name="id">id do usuario</param>
+        /// <returns></returns>
         [HttpDelete]
         public IActionResult Delete(Guid id) 
         {

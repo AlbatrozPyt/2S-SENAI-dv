@@ -19,6 +19,11 @@ namespace web_api_health_clinic.Controllers
             _feedbackRepository = new FeedbackRepository();
         }
 
+        /// <summary>
+        /// Comentar consulta
+        /// </summary>
+        /// <param name="f">Comentario</param>
+        /// <returns></returns>
         [HttpPost("ComentarConsultas")]
         public IActionResult Post(Feedback f)
         {
@@ -35,7 +40,11 @@ namespace web_api_health_clinic.Controllers
         }
 
 
-
+        /// <summary>
+        /// Listar comentario pelo nome do paciente
+        /// </summary>
+        /// <param name="nomeDoPaciente">Nome do paciente</param>
+        /// <returns></returns>
         [HttpGet("ListarFeedbacks")]
         public IActionResult Get(string nomeDoPaciente)
         {

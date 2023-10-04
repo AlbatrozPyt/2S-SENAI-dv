@@ -23,6 +23,11 @@ namespace web_api_health_clinic.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
+        /// <summary>
+        /// Metodo de Login do usuario
+        /// </summary>
+        /// <param name="user">Email e senha do usuario</param>
+        /// <returns></returns>
         [HttpPost("Login")]
         public IActionResult Login(LoginViewModel user)
         {

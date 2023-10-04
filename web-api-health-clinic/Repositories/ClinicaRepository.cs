@@ -39,6 +39,7 @@ namespace web_api_health_clinic.Repositories
         
         }
 
+
         public void Cadastrar(Clinica clinica)
         {
             ctx.Clinicas!.Add(clinica);

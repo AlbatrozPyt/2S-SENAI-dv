@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução ao JavaScript</title>
+</head>
+
+<body>
+    <h1>Introdução ao JavaScript</h1>
+
+    <form>
+        <label for="nome">Nome: </label>
+        <input type="text" id="nome" placeholder="Digite seu nome"> <br>
+
+        <label for="sobrenome">Sobrenome: </label>
+        <input type="text" id="sobrenome" placeholder="Digite seu sobrenome">
+
+        <br>
+
+        <button onclick="alert('Boa Tarde 🖐')">Boa Tarde</button>
+        <button onclick="Saudar()">Saudar</button>
+    </form>
+
+    <script>
+        function Saudar() {
+            // event.preventDefault(); // Para o submit do formulario
+
+            let nome = document.getElementById("nome").value;
+            let sobrenome = document.getElementById("sobrenome").value;
+
+            // console.log(nome);
+
+            alert(`Boa tarde ${nome} ${sobrenome} !!!`);
+        }
+    </script>
+
+</body>
+
+</html>

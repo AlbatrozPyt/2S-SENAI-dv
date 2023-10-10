@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seja Bem-Vindo</title>
+    <link rel="stylesheet" href="css/nick.css">
+    <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <form onsubmit="Saudacao()">
+        <label for="nome">Nome: </label>
+        <input type="text" name="" id="nome">
+
+        <label for="nickname">NickName: </label>
+        <input type="text" name="" id="nickname">
+
+        <button>Run</button>
+    </form>
+
+    <script>
+        function Saudacao() {
+            let nome = document.getElementById("nome").value;
+            let nickname = document.getElementById("nickname").value;
+
+            let sub = nome.replace(nome, nickname);
+
+            alert(`Olá ${sub}`)
+        }
+    </script>
+</body>
+</html>

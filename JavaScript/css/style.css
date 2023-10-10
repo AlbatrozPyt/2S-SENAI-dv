@@ -1,0 +1,67 @@
+body {
+    background-color: cyan;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-bottom: black 2px solid;
+}
+
+label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+input {
+    width: 200px;
+    height: 30px;
+    border-radius: 7px;
+    outline: none;
+    border: none;
+    margin-left: 10px;
+}
+
+select {
+    width: 200px;
+    height: 30px;
+    border-radius: 7px;
+    outline: none;
+    border: none;
+    margin-left: 10px;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    animation: infinite alternate colorido 1.5s;
+}
+
+@keyframes colorido {
+    0% {
+        color: red;
+        font-size: 10px;
+    }
+
+    50% {
+        color: green;
+        padding-left: 50px;
+    }
+
+    100% {
+        color: blue;
+    }
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    border-radius: 7px;
+    outline: none;
+    border: 2px black groove;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

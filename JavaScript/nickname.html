@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,26 +9,38 @@
     <link rel="stylesheet" href="css/nick.css">
     <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/x-icon">
 </head>
+
 <body>
     <form onsubmit="Saudacao()">
-        <label for="nome">Nome: </label>
-        <input type="text" name="" id="nome">
+        <div>
+            <label for="nome">Nome: </label>
+            <input type="text" name="" id="nome">
+        </div>
 
-        <label for="nickname">NickName: </label>
-        <input type="text" name="" id="nickname">
+        <div>
+            <label for="nickname">NickName: </label>
+            <input type="text" name="" id="nickname">
+        </div>
 
         <button>Run</button>
+        
+        <span id="saudar"></span>
     </form>
 
     <script>
         function Saudacao() {
+            event.preventDefault();
+
             let nome = document.getElementById("nome").value;
             let nickname = document.getElementById("nickname").value;
 
             let sub = nome.replace(nome, nickname);
 
-            alert(`Olá ${sub}`)
+            // alert(`Olá ${sub}`)
+
+            document.getElementById("saudar").innerText = `Bem-Vindo, ${sub}`;
         }
     </script>
 </body>
+
 </html>

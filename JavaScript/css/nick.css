@@ -1,5 +1,67 @@
 body {
+    background-image: linear-gradient(to right, red, black);
+}
+
+
+form {
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(to right, red, black);
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    height: 300px;
+}
+
+form div {
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+form label {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+    text-shadow: -2px 3px yellow;
+    margin-right: 10px;
+}
+
+form input {
+    width: 150px;
+    height: 25px;
+    border: black 2px solid;
+    box-shadow: -2px 3px black;
+}
+
+button {
+    width: 200px;
+    height: 30px;
+    border: none;
+    outline: none;
+    box-shadow: -2px 3px black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 15px;
+    background-color: yellow;
+}
+
+@keyframes move-move {
+    0% {
+        padding-left: 0px;
+    }
+    50% {
+        text-shadow: -2px 3px red;
+        background-color: blue;
+        border: yellowgreen 2px solid;
+        border-radius: 20px;
+    }
+    100% {
+        padding-left: 1000px;
+    }
+}
+
+span {
+    width: 100%;
+    font-size: 50px;
+    font-family: fantasy;
+    text-shadow: -2px 3px yellow;
+    animation: alternate infinite 1.5s move-move;
 }

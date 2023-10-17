@@ -1,3 +1,7 @@
+//! Lista Global
+const listaPessoas = [];
+
+
 function calcular(e) {
     e.preventDefault();
 
@@ -13,24 +17,22 @@ function calcular(e) {
 
 
     const imc = calcularImc(peso, altura).toFixed(2);
-    const sit = geraSituacao(imc);
+    const sitTXT = geraSituacao(imc);
 
-    // console.log(nome);
-    // console.log(altura);
-    // console.log(peso);
-    // console.log(imc);
-    // console.log(sit);
 
-    const pessoa = 
+
+    const pessoa =
     {
-        nome : nome,
-        altura : altura,
-        peso : peso,
-        imc : imc,
-        sit : sit
+        nome,
+        altura,
+        peso,
+        imc,
+        situacao: sitTXT
     }
 
-    console.log(pessoa);
+    listaPessoas.push(pessoa);
+
+    exibirDados();
 }
 
 function calcularImc(peso, altura) {
@@ -56,4 +58,33 @@ function geraSituacao(imc) {
     else {
         return "Cuidado !!!"
     }
+}
+
+function exibirDados() {
+    console.log(listaPessoas);
+
+    // <tr>
+    //     <td></td>
+    //     <td></td>
+    //     <td></td>
+    //     <td></td>
+    //     <td></td>
+    // </tr>
+
+    let linhas = "";
+
+    listaPessoas.forEach(function (objPess) {
+        //! linhas de tabela no HTML
+        linhas += `
+            <tr>
+                <td>${objPess.nome}</td>
+                <td>${objPess.altura}</td>
+                <td>${objPess.peso}</td>
+                <td>${objPess.imc}</td>
+                <td>${objPess.situacao}</td>
+            </tr>
+        `;
+    })
+
+    document.getElementById("cadastro").innerHTML = linhas;
 }

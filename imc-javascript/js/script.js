@@ -32,7 +32,11 @@ function calcular(e) {
 
     listaPessoas.push(pessoa);
 
+    //! Exibe a tabela
     exibirDados();
+
+    //! Limpa dados do formulario
+    limpaForm();
 }
 
 function calcularImc(peso, altura) {
@@ -63,14 +67,6 @@ function geraSituacao(imc) {
 function exibirDados() {
     console.log(listaPessoas);
 
-    // <tr>
-    //     <td></td>
-    //     <td></td>
-    //     <td></td>
-    //     <td></td>
-    //     <td></td>
-    // </tr>
-
     let linhas = "";
 
     listaPessoas.forEach(function (objPess) {
@@ -87,4 +83,10 @@ function exibirDados() {
     })
 
     document.getElementById("cadastro").innerHTML = linhas;
+}
+
+function limpaForm () {
+    document.getElementById("nome").value = "";
+    document.getElementById("altura").value = "";
+    document.getElementById("peso").value = "";
 }

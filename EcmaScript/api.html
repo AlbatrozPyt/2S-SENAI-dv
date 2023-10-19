@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="chamarApi()">
+        <label for="cep">CEP</label>
+        <input type="number" placeholder="digite o cep" id="cep" onblur="chamarApi()">
+        <br><br>
+
+        <label for="endereco">Endereço</label>
+        <input type="text" placeholder="..." id="endereco">
+        <br><br>
+
+        <label for="bairro">Bairro</label>
+        <input type="text" placeholder="..." id="bairro">
+        <br><br>
+
+        <label for="cidade">Cidade</label>
+        <input type="text" placeholder="..." id="cidade">
+        <br><br>
+
+        <label for="estado">Estado</label>
+        <input type="text" placeholder="..." id="estado">
+        <br><br>
+    </form>
+
+    <script>
+        async function chamarApi() {
+            const cep = document.getElementById("cep").value;
+            const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+            // resolvida ou fullfield
+            try {
+                const promise = await fetch(url);
+                const endereco = await promise.json();
+                console.log(promise);
+                console.log(endereco);
+
+                document.getElementById("endereco").value = endereco.logradouro
+                document.getElementById("bairro").value = endereco.bairro
+                document.getElementById("cidade").value = endereco.localidade
+                document.getElementById("estado").value = endereco.uf
+
+            } 
+            // rejeitada
+            catch (error) {
+                console.log("Deu ruim na api");
+            }
+        }
+
+    </script>
+</body>
+
+</html>

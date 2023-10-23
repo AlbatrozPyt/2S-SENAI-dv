@@ -1,35 +1,15 @@
 {
-  "imc": [
+  "contatos": [
     {
-      "id": 1,
-      "nome": "Heitor Bolota",
-      "altura": 2,
-      "peso": 100,
-      "imc": 28.6
-    },
-    {
-      "nome": "Gabriel",
-      "altura": 1.5,
-      "peso": 200,
-      "imc": 1000,
-      "id": 2
+      "cep": "17132106",
+      "endereco": "Rua Armando Nassula",
+      "bairro": "Jardim Pedro Andrucioli",
+      "cidade": "Agudos",
+      "estado": "SP",
+      "nome": "Matheus",
+      "telefone": "1234-56789",
+      "numero": "100",
+      "id": 1
     }
-  ],
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

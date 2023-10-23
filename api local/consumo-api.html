@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: black;
+        }
+
+        label {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-bottom: white 2px solid;
+            color: white;
+        }
+
+        input {
+            background-color: black;
+            color: green;
+            width: 300px;
+            height: 30px;
+            margin-left: 15px;
+            font-size: 15px;
+        }
+
+        input::placeholder {
+            font-size: 15px;
+            color: white;
+        }
+
+        button {
+            width: 150px;
+            height: 40px;
+            background-color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <form onsubmit="cadastrar(event)">
+        <label for="nome">Nome</label>
+        <input type="text" placeholder="..." id="nome">
+        <br><br> 
+
+        
+        <label for="Telefone">Telefone</label>
+        <input type="text" placeholder="..." id="telefone">
+        <br><br>
+
+
+        <label for="cep">CEP</label>
+        <input type="number" placeholder="digite o cep" id="cep" autocomplete="off" onblur="chamarApi()">
+        <span id="not-found"></span>
+        <br><br>
+
+        <label for="endereco">Endereço</label>
+        <input type="text" placeholder="..." id="endereco">
+        <br><br>
+
+        <label for="numero">N°</label>
+        <input type="number" placeholder="..." id="numero">
+        <br><br>
+
+        <label for="bairro">Bairro</label>
+        <input type="text" placeholder="..." id="bairro">
+        <br><br>
+
+        <label for="cidade">Cidade</label>
+        <input type="text" placeholder="..." id="cidade">
+        <br><br>
+
+        <label for="estado">Estado</label>
+        <input type="text" placeholder="..." id="estado">
+        <br><br>
+        
+
+        <button>Salvar contato</button>
+    </form>
+
+    <script>
+        const urlLocal = "http://localhost:3000/contatos";
+
+        async function cadastrar(e) {
+            e.preventDefault();
+            
+            const nome = document.getElementById("nome").value;
+            const telefone = document.getElementById("telefone").value;
+            const cep = document.getElementById("cep").value;
+            const endereco = document.getElementById("endereco").value;
+            const numero = document.getElementById("numero").value;
+            const bairro = document.getElementById("bairro").value;
+            const cidade = document.getElementById("cidade").value;
+            const estado = document.getElementById("estado").value;
+
+            const objDados = { cep, endereco, bairro, cidade, estado, nome, telefone, numero };
+
+            try {
+                const promise = await fetch(urlLocal, {
+                    body: JSON.stringify(objDados), // Transforma objeto em JSON
+                    headers: { "Content-Type": "application/json" },
+                    method: "post"
+                })
+
+                const retorno = promise.json();
+                console.log(retorno);
+            } catch (error) {
+                alert(`Deu ruim: ${error}`)
+            }
+        }
+
+        async function chamarApi() {
+            const cep = document.getElementById("cep").value;
+            const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+            // resolvida ou fullfield
+            try {
+                const promise = await fetch(url);
+                const endereco = await promise.json();
+
+                exibirEndereco(endereco);
+                document.getElementById("not-found").innerText = "";
+                // console.log(promise);
+                // console.log(endereco);
+
+
+            }
+            // rejeitada
+            catch (error) {
+                limparEndereco();
+                document.getElementById("not-found").innerText = "CEP invalido";
+            }
+        }
+
+        function exibirEndereco(endereco) {
+            document.getElementById("endereco").value = endereco.logradouro;
+            document.getElementById("bairro").value = endereco.bairro;
+            document.getElementById("cidade").value = endereco.localidade;
+            document.getElementById("estado").value = endereco.uf;
+        }
+
+        function limparEndereco() {
+            document.getElementById("endereco").value = "";
+            document.getElementById("bairro").value = "";
+            document.getElementById("cidade").value = "";
+            document.getElementById("estado").value = "";
+        }
+
+    </script>
+</body>

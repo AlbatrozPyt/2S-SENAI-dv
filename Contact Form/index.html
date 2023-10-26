@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form JS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css
+
+
+
+    ">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <figure>
+        <img class="arte" src="./assets/images/art.png" alt="">
+    </figure>
+    <div class="container-grid container-flex">
+
+        <div class="caixa-contato">
+            <i class="fa-regular fa-address-card icone-contato"></i>
+        </div>
+
+        <h1 class="titulo">Contact form</h1>
+        <p class="descricao">Insira os dados do contato e clique em cadastrar!</p>
+
+        <form class="formulario-contato" onsubmit="cadastrar(event)">
+            <div class="linha">
+                <div class="rotulos">
+                    <label for="nome">Nome</label>
+                </div>
+                <div class="entradas">
+                    <input type="text" id="nome" class="entrada entrada--metade" placeholder="Nome">
+                    <input type="text" id="sobrenome" class="entrada entrada--metade" placeholder="Sobrenome">
+                </div>
+            </div>
+
+            <div class="linha">
+                <div class="rotulos">
+                    <label for="nome">Email</label>
+                </div>
+                <div class="entradas">
+                    <input type="text" id="email" class="entrada entrada--inteira" placeholder="ex: fulano@email.com">
+                </div>
+            </div>
+
+            <div class="linha">
+                <div class="rotulos">
+                    <label for="pais">Telefone</label>
+                </div>
+                <div class="entradas">
+                    <input type="number" id="pais" class="entrada entrada--terco" placeholder="+55" maxlength="3">
+                    <input type="number" id="ddd" class="entrada entrada--terco" placeholder="ddd" maxlength="2">
+                    <input type="number" id="telefone" class="entrada entrada--terco" placeholder="ex: 99999-9999"
+                        maxlength="10">
+                </div>
+            </div>
+
+            <div class="linha">
+                <div class="rotulos">
+                    <label for="pais">Endereço</label> <br> <span id="not-found"></span>
+                </div>
+                <div class="entradas">
+                    <input type="number" id="cep" class="entrada entrada--quarto" placeholder="cep: 9999-999"
+                        maxlength="8" onblur="chamarApi()">
+                    <input type="text" id="rua" class="entrada entrada--metade" placeholder="Rua Lá de Casa">
+                    <input type="text" id="numero" class="entrada entrada--quarto" placeholder="ex: 555">
+                    <input type="text" id="complemento" class="entrada entrada--terco" placeholder="Apto. 12 Bloco X">
+                    <input type="text" id="bairro" class="entrada entrada--terco" placeholder="Bairro">
+                    <input type="text" id="cidade" class="entrada entrada--terco" placeholder="Cidade">
+                    <input type="text" id="UF" class="entrada entrada--terco" placeholder="Estado">
+                </div>
+            </div>
+
+            <div class="linha">
+                <div class="rotulos">
+                    <label for="pais">Anotações</label>
+                </div>
+                <div class="entradas">
+                    <textarea class="entrada anotacoes" name="anotacoes" id=""
+                        placeholder="Suas anotações aqui"></textarea>
+                </div>
+            </div>
+
+            <div class="linha box-botoes">
+                <button type="submit" class="btn cadastrar">Cadastrar</button>
+                <button type="submit" onsubmit="limparEndereco()" class="btn limpar">Limpar</button>
+            </div>
+        </form>
+        <section class="cadastros">
+            <article class="cadastro">
+
+            </article>
+        </section>
+
+
+        <script src="js/consumo-api.js"></script>
+</body>
+
+</html>

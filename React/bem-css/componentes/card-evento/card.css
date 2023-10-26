@@ -33,7 +33,7 @@
     background: none;
 }
 
-.card__connect--DISABLED:hover {
+.card__connect--disabled:hover {
     color: lightgray;
     cursor: not-allowed;
 }

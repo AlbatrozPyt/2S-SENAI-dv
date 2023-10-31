@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from "../../Components/Header/Header.jsx"
 
-const TipoEventos = () => {
+const LoginPage = () => {
     return (
         <div>
-            <h1>Tipo de eventos</h1>
+            <h1>Login Page</h1>
             <Header/>
         </div>
     );
 };
 
-export default TipoEventos;
+export default LoginPage;

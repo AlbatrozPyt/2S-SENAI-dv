@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import Rotas from "./routes.js"
 
 function App() {
   return (
-    <link rel="shortcut icon" href={logo} type="image/x-icon" />
+    <Rotas/>
   );
 }
 

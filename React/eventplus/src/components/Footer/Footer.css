@@ -1,0 +1,12 @@
+.footerpage {
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer__rights {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: red;
+    color: white;
+}

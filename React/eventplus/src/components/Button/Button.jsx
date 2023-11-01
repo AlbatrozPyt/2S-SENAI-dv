@@ -1,9 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const Button = () => {
-    return (
-        <button type="button">Calcular</button>
-    );
+const Button = (props) => {
+  return <button type={props.type}> {props.textoButao} </button>;
 };
 
 export default Button;

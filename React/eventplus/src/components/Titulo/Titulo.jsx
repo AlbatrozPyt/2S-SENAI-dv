@@ -1,12 +1,13 @@
-import React from 'react';
-import "./Titulo.css"
+import React from "react";
+import "./Titulo.css";
 
-const Titulo = () => {
-    return (
-        <div>
-            <h1>Componente Título</h1>
-        </div>
-    );
+const Titulo = (props) => {
+  return (
+            <h1>
+                Componente Título
+                <hr />
+            </h1>
+  )
 };
 
 export default Titulo;

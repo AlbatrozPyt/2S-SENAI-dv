@@ -1,9 +1,14 @@
 import React from "react";
+import Title from "../../Components/Titulo/Title";
 
 const EventosPage = () => {
   return (
     <div>
-      <h1>Eventos page</h1>
+      <Title
+         titleText={"Evento Page"}
+         additionalClass={"margem-acima"}
+         color=""
+      />
     </div>
   );
 };

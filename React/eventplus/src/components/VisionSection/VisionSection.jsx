@@ -12,7 +12,7 @@ const VisionSection = () => {
           additionalClass="vision__title"
         />
 
-        <p>
+        <p className="vision__text">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
           totam, dolorem incidunt ad nesciunt dolores recusandae iusto voluptas
           quod perspiciatis vel atque eaque maiores nisi natus eveniet nulla sit

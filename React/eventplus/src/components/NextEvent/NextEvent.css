@@ -10,7 +10,7 @@
 }
 
 
-.tootip {
+.tooltip {
     color: #fff !important;
     background-color: #B51D44 !important;
   }
@@ -72,5 +72,6 @@
     .event-card {
       width: 250px;
       height: 300px;
+      box-shadow: 2px 3px black;
     }
   }

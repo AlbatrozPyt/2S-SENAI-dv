@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Profiler, useEffect, useState } from "react";
 import "./HomePage.css";
 import Title from "../../Components/Titulo/Title";
 import MainContent from "../../Components/MainContent/MainContent";
@@ -7,29 +7,31 @@ import VisionSection from "../../Components/VisionSection/VisionSection";
 import ContactSection from "../../Components/ContactSection/ContactSection";
 import Container from "../../Components/Container/Container";
 import NextEvent from "../../Components/NextEvent/NextEvent";
+import axios from "axios";
+import api from "../../Services/Services"
 
 const HomePage = () => {
-  
   useEffect(() => {
-    async function getProximosEventos(params) {
-      
+    //! chamar api
+    async function getProximosEventos() {
+      try {
+        const promisse = await api.get(
+          "/Evento/ListarProximos"
+        );
+
+        console.log(promisse.data);
+        setNextEvents(promisse.data);
+      } catch (error) {
+        alert("Deu ruim na api!!!");
+      }
     }
+    getProximosEventos();
+    console.log("A HOME FOI MONTADA");
   }, []);
 
-
+  //* fake mock - api mocada
   const [nextEvents, setNextEvents] = useState([
-    {
-      id: 1,
-      title: "Evento X",
-      descricao: "Evento SQL Server",
-      data: "10/11/2023",
-    },
-    {
-      id: 2,
-      title: "Evento Y",
-      descricao: "Bora codar JS",
-      data: "11/11/2023",
-    },
+  
   ]);
 
   return (
@@ -45,10 +47,10 @@ const HomePage = () => {
               nextEvents.map((e) => {
               return (
                 <NextEvent
-                  title={e.title}
+                  title={e.nomeEvento}
                   description={e.descricao}
-                  eventDate={e.data}
-                  idEvento={e.id}
+                  eventDate={e.dataEvento}
+                  idEvento={e.idEvento}
                 />
               );
             })}

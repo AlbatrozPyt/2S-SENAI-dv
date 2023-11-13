@@ -15,12 +15,9 @@ const HomePage = () => {
     //! chamar api
     async function getProximosEventos() {
       try {
-        const promisse = await api.get(
-          "/Evento/ListarProximos"
-        );
+        const promise = await api.get("/Evento/ListarProximos");
 
-        console.log(promisse.data);
-        setNextEvents(promisse.data);
+        setNextEvents(promise.data);
       } catch (error) {
         alert("Deu ruim na api!!!");
       }

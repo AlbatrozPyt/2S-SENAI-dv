@@ -9,6 +9,7 @@ import Container from "../../Components/Container/Container";
 import NextEvent from "../../Components/NextEvent/NextEvent";
 import axios from "axios";
 import api from "../../Services/Services"
+import img from "../../assets/images/default-image.jpeg"
 
 const HomePage = () => {
   useEffect(() => {

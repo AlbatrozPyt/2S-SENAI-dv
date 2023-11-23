@@ -59,7 +59,7 @@ const TableTp = ({ dados, fnUpdate, fnDelete }) => {
               </td>
 
               <td className="table-data__data table-data__data--big">
-                {dateFormatDbToView(e.dataEvento)}
+                {new Date(e.dataEvento).toLocaleDateString()}
               </td>
 
               <td className="table-data__data table-data__data--little">

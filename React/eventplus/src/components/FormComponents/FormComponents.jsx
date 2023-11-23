@@ -26,7 +26,14 @@ export const Input = ({
   );
 };
 
-export const Button = ({ id, name, type, additionalClass="", manipulationFunction, textButton }) => {
+export const Button = ({
+  id,
+  name,
+  type,
+  additionalClass = "",
+  manipulationFunction,
+  textButton,
+}) => {
   return (
     <button
       type={type}
@@ -37,5 +44,31 @@ export const Button = ({ id, name, type, additionalClass="", manipulationFunctio
     >
       {textButton}
     </button>
+  );
+};
+
+export const Select = ({
+  tipoEventos,
+  id,
+  name,
+  required,
+  additionalClass = "",
+  manipulationFunction,
+  defaultValue,
+}) => {
+  return (
+    <select
+      className={`input-component ${additionalClass}`}
+      name={name}
+      id={id}
+      required={required}
+      onChange={manipulationFunction}
+      value={defaultValue}
+    >
+      <option value="">Selecionar</option>
+      {tipoEventos.map((e) => {
+        return <option value={tipoEventos}>{` ${e.titulo} `}</option>;
+      })}
+    </select>
   );
 };

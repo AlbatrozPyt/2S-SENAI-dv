@@ -67,7 +67,7 @@ export const Select = ({
     >
       <option value="">Selecionar</option>
       {tipoEventos.map((e) => {
-        return <option value={tipoEventos}>{` ${e.titulo} `}</option>;
+        return <option value={e.idTipoEvento}> {` ${e.titulo} `}</option>;
       })}
     </select>
   );

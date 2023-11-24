@@ -114,7 +114,14 @@ const TipoEventos = () => {
       // limpar titulo
       editActionAbort();
     } catch (error) {
-      alert("Problemas no update");
+      setNotifyUser({
+        titleNote: "Falha",
+        textNote: `Problemas na api!`,
+        imgIcon: "danger",
+        imgAlt:
+          "Imagem.",
+        showMessage: true,
+      });
     }
   }
 

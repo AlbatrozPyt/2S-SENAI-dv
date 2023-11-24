@@ -16,12 +16,14 @@ import Notification from "../../Components/Notification/Notification";
 
 const EventosPage = () => {
   const [frmEdit, setFrmEdit] = useState(false);
+  const [frmEditData, setFrmEditData] = useState({});
 
   const [evento, setEvento] = useState([]);
   const [tipoEvento, setTipoEvento] = useState([]);
 
   const [notifyUser, setNotifyUser] = useState({});
 
+  const [idEvento, setIdEvento] = useState("");
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
   const [tituloTipoEvento, setTituloTipoEvento] = useState("");
@@ -29,9 +31,7 @@ const EventosPage = () => {
   const [idInstituicao, setIdInstituicao] = useState(
     "dceef91c-f3cc-490f-802d-a68722be9f4f"
   );
-  const [idTipoEvento, setIdTipoEvento] = useState(
-    "da361844-ee1e-40a7-96ef-1be14f608a22"
-  );
+  const [idTipoEvento, setIdTipoEvento] = useState("");
 
   //! Lista de eventos
   useEffect(() => {
@@ -55,8 +55,19 @@ const EventosPage = () => {
       }
     }
 
+    async function getInstituicao() {
+      try {
+        const retornoGetInstituicao = await api.get("/Instituicao"); // Chama a rota de cadastro
+
+        setIdInstituicao(retornoGetInstituicao.data.idInstituicao); // Atualiza tipos de evento
+      } catch (error) {
+        alert("Deu ruim tipos de evento");
+      }
+    }
+
     getListaEventos();
     getTiposEvento();
+    getInstituicao();
   }, []);
 
   //* CADASTRAR
@@ -95,7 +106,7 @@ const EventosPage = () => {
       }); // Cadastra evento
       const retornoGet = await api.get("/Evento"); // Atualiza a pagina
       setEvento(retornoGet.data); // Atualiza a pagina
-      setNome(""); // limpa a variavel
+      editActionAbort();
     } catch (error) {
       setNotifyUser({
         titleNote: "Erro",
@@ -136,8 +147,63 @@ const EventosPage = () => {
   }
 
   //* ATUALIZAR
-  function handleUpdate() {
-    alert("Hora de atualizar");
+  async function handleUpdate(e) {
+    e.preventDefault();
+
+    try {
+      const retornoPut = await api.put("/Evento", {
+        nomeEvento: nome,
+        dataEvento: dataEvento,
+        descricao: descricao,
+        idInstituicao: idInstituicao,
+        idTipoEvento: idTipoEvento,
+      }); // Atualizar evento
+
+      // atualizar o state(api.get)
+      const retornoGet = await api.get("/Evento");
+      setEvento(retornoGet.data);
+
+      editActionAbort();
+    } catch (error) {
+      setNotifyUser({
+        titleNote: "Falha",
+        textNote: `Problemas na api!`,
+        imgIcon: "danger",
+        imgAlt: "Imagem.",
+        showMessage: true,
+      });
+    }
+  }
+
+  async function showUpdateForm(evento) {
+    try {
+      setFrmEditData(evento);
+      setFrmEdit(true);
+
+      //fazer o get by id
+      const retornoGetById = await api.get(`/TiposEvento/${evento.idEvento}`);
+      // preencher o titulo no state
+      setNome(retornoGetById.data.nomeEvento);
+      setDataEvento(retornoGetById.data.dataEvento);
+      setIdInstituicao(retornoGetById.data.idInstituicao);
+      setDescricao(retornoGetById.data.descricao);
+      setIdTipoEvento(retornoGetById.data.idTipoEvento);
+    } catch (error) {
+      setNotifyUser({
+        titleNote: "Erro",
+        textNote: `showUpdateForm nao foi!!!`,
+        imgIcon: "danger",
+        imgAlt: "Imagem de erro",
+        showMessage: true,
+      });
+    }
+  }
+
+  function editActionAbort() {
+    setFrmEdit(false);
+    setNome("");
+    setDataEvento("");
+    setDescricao("");
   }
 
   return (
@@ -183,8 +249,10 @@ const EventosPage = () => {
 
                   <Select
                     tipoEventos={tipoEvento}
+                    value={idTipoEvento}
                     manipulationFunction={(e) => {
-                      setTituloTipoEvento(e.target.value);
+                      // setTituloTipoEvento(e.target.value);
+                      setIdTipoEvento(e.target.value);
                     }}
                     required={"required"}
                   />
@@ -236,8 +304,10 @@ const EventosPage = () => {
 
                   <Select
                     tipoEventos={tipoEvento}
+                    value={idTipoEvento}
                     manipulationFunction={(e) => {
-                      setTituloTipoEvento(e.target.value);
+                      // setTituloTipoEvento(e.target.value);
+                      setIdTipoEvento(e.target.value);
                     }}
                     required={"required"}
                   />
@@ -272,6 +342,7 @@ const EventosPage = () => {
                       additionalClass={
                         "btn-cadastrar button-component--middle button-component"
                       }
+                      manipulationFunction={editActionAbort}
                     />
                   </div>
                 </>
@@ -288,7 +359,7 @@ const EventosPage = () => {
           <TableTp
             dados={evento}
             fnDelete={handleDelete}
-            fnUpdate={handleUpdate}
+            fnUpdate={showUpdateForm}
           />
         </Container>
       </section>

@@ -10,8 +10,14 @@ import NextEvent from "../../Components/NextEvent/NextEvent";
 import axios from "axios";
 import api from "../../Services/Services"
 import img from "../../assets/images/default-image.jpeg"
+import { useContext } from "react";
+import { UserContext } from "../../context/AuthContext";
 
 const HomePage = () => {
+  const {userData} = useContext(UserContext);
+
+  console.log(userData);
+
   useEffect(() => {
     //! chamar api
     async function getProximosEventos() {

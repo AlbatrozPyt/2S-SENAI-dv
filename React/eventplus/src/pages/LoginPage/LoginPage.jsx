@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ImageIllustrator from "../../Components/ImageIlustrator/ImageIllustrator";
 import logo from "../../assets/images/logo-pink.svg";
 import { Input, Button } from "../../Components/FormComponents/FormComponents";
@@ -9,14 +9,21 @@ import api from "../../Services/Services";
 
 import "./LoginPage.css";
 import { UserContext, userDecodeToken } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [user, setUser] = useState({
-    email: "admin@admin.com",
-    senha: "minhoca",
+    email: "",
+    senha: "",
   });
 
   const {userData, setUserData} = useContext(UserContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(userData.name) navigate("/");
+  } ,[userData])
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -34,9 +41,10 @@ const LoginPage = () => {
 
         const userFullToken = userDecodeToken(retornoPost.data.token);
 
+        setUserData(userFullToken); // guarda os dados decodificados(payload)
         localStorage.setItem("token", JSON.stringify(userFullToken))
 
-        setUserData(userFullToken); // guarda os dados decodificados(payload)
+        navigate("/")
       } catch (error) {
         // BadRequest(401)
         alert("Usuario ou Senha incorretos. Verifique a conexão da internet");
@@ -81,7 +89,6 @@ const LoginPage = () => {
               name="senha"
               required={true}
               value={user.senha}
-              sz
               manipulationFunction={(e) => {
                 setUser({ ...user, senha: e.target.value.trim() });
               }}

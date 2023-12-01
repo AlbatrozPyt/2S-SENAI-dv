@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>webapi.event+</name>
+    </assembly>
+    <members>
+        <member name="T:webapi.event_.Contexts.Event_Context">
+            <summary>
+            Classe de contexto que faz referências as tabelas e define string de conexão
+            </summary>
+        </member>
+        <member name="M:webapi.event_.Contexts.Event_Context.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Define as opções de construção do banco
+            </summary>
+            <param name="optionsBuilder">Objeto com as configurações definidas</param>
+        </member>
+        <member name="T:webapi.event_.Migrations.tortuguita">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.Migrations.tortuguita.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.Migrations.tortuguita.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.Migrations.tortuguita.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

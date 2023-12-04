@@ -10,6 +10,7 @@ import Header from "../Components/Header/Header.jsx";
 import Footer from "../Components/Footer/Footer.jsx";
 
 import { PrivateRoute } from "../Routes/PrivateRoute";
+import EventosAluno from "../Pages/EventoAlunoPage/EventoAluno.jsx";
 
 const Rotas = () => {
   return (
@@ -41,7 +42,7 @@ const Rotas = () => {
           path="/eventos-aluno"
           element={
             <PrivateRoute redirectTo="/">
-              <EventosPage />
+              <EventosAluno />
             </PrivateRoute>
           }
         />

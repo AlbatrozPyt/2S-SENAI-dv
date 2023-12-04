@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\24004134870\\Desktop\\2023-1S-2D\\sprint-2-api\\Event+\\webapi.event+\\webapi.event+.csproj": {}
+    "C:\\Users\\24004134870\\Desktop\\2S-SENAI-dv\\React\\sprint-2-api\\Event+\\webapi.event+\\webapi.event+.csproj": {}
   },
   "projects": {
-    "C:\\Users\\24004134870\\Desktop\\2023-1S-2D\\sprint-2-api\\Event+\\webapi.event+\\webapi.event+.csproj": {
+    "C:\\Users\\24004134870\\Desktop\\2S-SENAI-dv\\React\\sprint-2-api\\Event+\\webapi.event+\\webapi.event+.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\24004134870\\Desktop\\2023-1S-2D\\sprint-2-api\\Event+\\webapi.event+\\webapi.event+.csproj",
+        "projectUniqueName": "C:\\Users\\24004134870\\Desktop\\2S-SENAI-dv\\React\\sprint-2-api\\Event+\\webapi.event+\\webapi.event+.csproj",
         "projectName": "webapi.event+",
-        "projectPath": "C:\\Users\\24004134870\\Desktop\\2023-1S-2D\\sprint-2-api\\Event+\\webapi.event+\\webapi.event+.csproj",
+        "projectPath": "C:\\Users\\24004134870\\Desktop\\2S-SENAI-dv\\React\\sprint-2-api\\Event+\\webapi.event+\\webapi.event+.csproj",
         "packagesPath": "C:\\Users\\24004134870\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\24004134870\\Desktop\\2023-1S-2D\\sprint-2-api\\Event+\\webapi.event+\\obj\\",
+        "outputPath": "C:\\Users\\24004134870\\Desktop\\2S-SENAI-dv\\React\\sprint-2-api\\Event+\\webapi.event+\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\24004134870\\AppData\\Roaming\\NuGet\\NuGet.Config",

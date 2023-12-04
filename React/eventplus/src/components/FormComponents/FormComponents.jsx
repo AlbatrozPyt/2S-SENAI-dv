@@ -48,7 +48,7 @@ export const Button = ({
 };
 
 export const Select = ({
-  tipoEventos,
+  dados,
   id,
   name,
   required,
@@ -66,8 +66,8 @@ export const Select = ({
       value={defaultValue}
     >
       <option value="">Selecionar</option>
-      {tipoEventos.map((e) => {
-        return <option value={e.idTipoEvento}> {` ${e.titulo} `}</option>;
+      {dados.map((e) => {
+        return <option value={e.value}> {` ${e.text} `}</option>;
       })}
     </select>
   );

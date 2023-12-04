@@ -248,7 +248,7 @@ const EventosPage = () => {
                   />
 
                   <Select
-                    tipoEventos={tipoEvento}
+                    dados={tipoEvento}
                     value={idTipoEvento}
                     manipulationFunction={(e) => {
                       // setTituloTipoEvento(e.target.value);
@@ -303,7 +303,7 @@ const EventosPage = () => {
                   />
 
                   <Select
-                    tipoEventos={tipoEvento}
+                    dados={tipoEvento}
                     value={idTipoEvento}
                     manipulationFunction={(e) => {
                       // setTituloTipoEvento(e.target.value);

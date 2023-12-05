@@ -4,8 +4,7 @@
  * @returns 
  */
 
-export const dateFormatDbToView = (data) => {
-    console.log(data);
+export const dateFormatDbToView = (data) => {;
     //! EX: 2023-12-28T00:00:00 para 28/12/2023
     //data = "2023-12-28T00:00:00"
     data = data.substr(0, 10) // Retorna a data 2023-12-28

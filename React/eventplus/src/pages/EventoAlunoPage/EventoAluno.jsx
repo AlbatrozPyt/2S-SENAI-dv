@@ -35,6 +35,19 @@ const EventosAluno = () => {
       try {
         if (tipoEvento === "1") {
           const promiseGet = await api.get("/Evento");
+          const promiseGetMy = await api.get(
+            `/PresencasEvento/ListarMinhas/${userData.userId}`
+          );
+
+          const dadosMarcados = verificaPresenca(
+            promiseGet.data,
+            promiseGetMy.data
+          );
+          
+          console.clear()
+          console.log("DADOS MARCADOS");
+          console.log(dadosMarcados);
+
           setEventos(promiseGet.data);
         } else {
           let arrEventos = [];
@@ -42,21 +55,33 @@ const EventosAluno = () => {
             `PresencasEvento/ListarMinhas/${userData.userId}`
           );
 
-          promiseGetMy.data.forEach(element => {
-            arrEventos.push(element.evento)
+          promiseGetMy.data.forEach((element) => {
+            arrEventos.push(element.evento);
           });
 
           setEventos(arrEventos);
         }
       } catch (error) {
-        console.log("Deu erro no GetEventos");
+        console.log("Deu erro no GetEventos " + error);
       }
 
       setShowSpinner(false);
     }
 
     loadEventsType();
-  }, [tipoEvento]);
+  }, [tipoEvento, userData.userId]);
+
+  const verificaPresenca = (arrAllEvents, eventsUser) => {
+    for (let x = 0; x < arrAllEvents.length; x++) {
+      for (let i = 0; i < eventsUser.length; i++) {
+        if (arrAllEvents[x].idEvento === eventsUser[i].idEvento) {
+          arrAllEvents[x].situacao = true;
+          break;
+        }
+      }
+    }
+    return arrAllEvents;  
+  };
 
   // toggle meus eventos ou todos os eventos
   function myEvents(tpEvent) {

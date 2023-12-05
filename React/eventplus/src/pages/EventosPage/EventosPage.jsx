@@ -26,7 +26,6 @@ const EventosPage = () => {
   const [idEvento, setIdEvento] = useState("");
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
-  const [tituloTipoEvento, setTituloTipoEvento] = useState("");
   const [dataEvento, setDataEvento] = useState("");
   const [idInstituicao, setIdInstituicao] = useState(
     "dceef91c-f3cc-490f-802d-a68722be9f4f"
@@ -50,16 +49,18 @@ const EventosPage = () => {
         const retornoGetTipos = await api.get("/TiposEvento"); // Chama a rota de cadastro
 
         setTipoEvento(retornoGetTipos.data); // Atualiza tipos de evento
-      } catch (error) {
-        alert("Deu ruim tipos de evento");
-      }
-    }
 
-    async function getInstituicao() {
-      try {
-        const retornoGetInstituicao = await api.get("/Instituicao"); // Chama a rota de cadastro
+        //! Tipos de evento
+        const tpEventosModificado = [];
+        //retorno da api (array tipo de eventos)
+        retornoGetTipos.data.forEach((event) => {
+          tpEventosModificado.push({
+            value: event.idTipoEvento,
+            text: event.titulo,
+          });
+        });
 
-        setIdInstituicao(retornoGetInstituicao.data.idInstituicao); // Atualiza tipos de evento
+        setTipoEvento(tpEventosModificado);
       } catch (error) {
         alert("Deu ruim tipos de evento");
       }
@@ -67,7 +68,6 @@ const EventosPage = () => {
 
     getListaEventos();
     getTiposEvento();
-    getInstituicao();
   }, []);
 
   //* CADASTRAR
@@ -88,6 +88,21 @@ const EventosPage = () => {
     }
 
     try {
+      
+
+      const retornoPost = await api.post("/Evento", {
+        nomeEvento: nome,
+        dataEvento: dataEvento,
+        descricao: descricao,
+        idInstituicao: idInstituicao,
+        idTipoEvento: idTipoEvento
+      }); // Cadastra evento
+
+      const retornoGet = await api.get("/Evento"); // Atualiza a pagina
+      console.log(retornoPost.data);
+      setEvento(retornoGet.data); // Atualiza a pagina
+      editActionAbort();
+
       setNotifyUser({
         titleNote: "Sucesso",
         textNote: `Cadastrado com sucesso!`,
@@ -97,20 +112,10 @@ const EventosPage = () => {
         showMessage: true,
       });
 
-      const retornoPost = await api.post("/Evento", {
-        nomeEvento: nome,
-        dataEvento: dataEvento,
-        descricao: descricao,
-        idInstituicao: idInstituicao,
-        idTipoEvento: idTipoEvento,
-      }); // Cadastra evento
-      const retornoGet = await api.get("/Evento"); // Atualiza a pagina
-      setEvento(retornoGet.data); // Atualiza a pagina
-      editActionAbort();
     } catch (error) {
       setNotifyUser({
         titleNote: "Erro",
-        textNote: `Deu ruim na api`,
+        textNote: `Deu ruim na api`+error,
         imgIcon: "danger",
         imgAlt: "Imagem de Falha",
         showMessage: true,
@@ -156,7 +161,7 @@ const EventosPage = () => {
         dataEvento: dataEvento,
         descricao: descricao,
         idInstituicao: idInstituicao,
-        idTipoEvento: idTipoEvento,
+        idTipoEvento: idTipoEvento
       }); // Atualizar evento
 
       // atualizar o state(api.get)
@@ -248,14 +253,15 @@ const EventosPage = () => {
                   />
 
                   <Select
-                    dados={tipoEvento}
-                    value={idTipoEvento}
-                    manipulationFunction={(e) => {
-                      // setTituloTipoEvento(e.target.value);
-                      setIdTipoEvento(e.target.value);
-                    }}
-                    required={"required"}
+                    id="tipo-evento"
+                    name="tipo-evento"
+                    required={true}
+                    dados={tipoEvento} // aqui o array dos tipos
+                    manipulationFunction={(e) => setIdTipoEvento(e.target.value)} // aqui só a variável state
+                    defaultValue={idTipoEvento}
                   />
+
+                  <span>{idTipoEvento}</span>
 
                   <Input
                     type={"date"}
@@ -304,7 +310,6 @@ const EventosPage = () => {
 
                   <Select
                     dados={tipoEvento}
-                    value={idTipoEvento}
                     manipulationFunction={(e) => {
                       // setTituloTipoEvento(e.target.value);
                       setIdTipoEvento(e.target.value);

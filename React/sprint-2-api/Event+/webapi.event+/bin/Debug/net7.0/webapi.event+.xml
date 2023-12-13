@@ -15,6 +15,12 @@
             </summary>
             <param name="optionsBuilder">Objeto com as configurações definidas</param>
         </member>
+        <member name="M:webapi.event_.Controllers.ComentariosEventoController.#ctor(Microsoft.Azure.CognitiveServices.ContentModerator.ContentModeratorClient)">
+            <summary>
+            Construtor que recebe os dados para o acesso ao servico externo
+            </summary>
+            <param name="contentModeratorClient">objeto contentModeratorCLient</param>
+        </member>
         <member name="T:webapi.event_.Migrations.tortuguita">
             <inheritdoc />
         </member>

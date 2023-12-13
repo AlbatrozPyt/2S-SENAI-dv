@@ -56,6 +56,10 @@
               "target": "Package",
               "version": "[7.0.10, )"
             },
+            "Microsoft.Azure.CognitiveServices.ContentModerator": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",

@@ -738,6 +738,26 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {}
         }
       },
+      "Microsoft.Azure.CognitiveServices.ContentModerator/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Rest.ClientRuntime": "[2.3.18, 3.0.0)",
+          "Microsoft.Rest.ClientRuntime.Azure": "[3.3.18, 4.0.0)",
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "10.0.3",
+          "System.Net.Http": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.4/Microsoft.Azure.CognitiveServices.ContentModerator.dll": {
+            "related": ".runtimeconfig.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.4/Microsoft.Azure.CognitiveServices.ContentModerator.dll": {
+            "related": ".runtimeconfig.json;.xml"
+          }
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
         "type": "package",
         "compile": {
@@ -1852,6 +1872,41 @@
         "runtime": {
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
             "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Microsoft.Rest.ClientRuntime/2.3.18": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.dll": {
+            "related": ".runtimeconfig.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.dll": {
+            "related": ".runtimeconfig.json;.xml"
+          }
+        }
+      },
+      "Microsoft.Rest.ClientRuntime.Azure/3.3.18": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Rest.ClientRuntime": "[2.3.17, 3.0.0)",
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.Azure.dll": {
+            "related": ".runtimeconfig.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.Azure.dll": {
+            "related": ".runtimeconfig.json;.xml"
           }
         }
       },
@@ -4938,6 +4993,23 @@
         "microsoft.aspnetcore.razor.language.nuspec"
       ]
     },
+    "Microsoft.Azure.CognitiveServices.ContentModerator/2.0.0": {
+      "sha512": "rNx82/CijObrXCLU8LSwu6/F8mq4YhSka75QGeXTzCDIlmhQHrGh2MDBxzjwtQ5USSa/uBCORUE4azzgnIteZQ==",
+      "type": "package",
+      "path": "microsoft.azure.cognitiveservices.contentmoderator/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/Microsoft.Azure.CognitiveServices.ContentModerator.dll",
+        "lib/net452/Microsoft.Azure.CognitiveServices.ContentModerator.runtimeconfig.json",
+        "lib/net452/Microsoft.Azure.CognitiveServices.ContentModerator.xml",
+        "lib/netstandard1.4/Microsoft.Azure.CognitiveServices.ContentModerator.dll",
+        "lib/netstandard1.4/Microsoft.Azure.CognitiveServices.ContentModerator.runtimeconfig.json",
+        "lib/netstandard1.4/Microsoft.Azure.CognitiveServices.ContentModerator.xml",
+        "microsoft.azure.cognitiveservices.contentmoderator.2.0.0.nupkg.sha512",
+        "microsoft.azure.cognitiveservices.contentmoderator.nuspec"
+      ]
+    },
     "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
       "sha512": "UcSjPsst+DfAdJGVDsu346FX0ci0ah+lw3WRtn18NUwEqRt70HaOQ7lI72vy3+1LxtqI3T5GWwV39rQSrCzAeg==",
       "type": "package",
@@ -6722,6 +6794,40 @@
         "lib/netstandard2.0/Microsoft.OpenApi.xml",
         "microsoft.openapi.1.4.3.nupkg.sha512",
         "microsoft.openapi.nuspec"
+      ]
+    },
+    "Microsoft.Rest.ClientRuntime/2.3.18": {
+      "sha512": "daE2vz5eNmiUbx8Lm0DArlKfKVtH3IzSteR0N+AJJ7cDgj32LcFudGx9Vm0bFelmiEZ3nO4Y7XTk2nfjUK/uCg==",
+      "type": "package",
+      "path": "microsoft.rest.clientruntime/2.3.18",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/Microsoft.Rest.ClientRuntime.dll",
+        "lib/net452/Microsoft.Rest.ClientRuntime.runtimeconfig.json",
+        "lib/net452/Microsoft.Rest.ClientRuntime.xml",
+        "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.dll",
+        "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.runtimeconfig.json",
+        "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.xml",
+        "microsoft.rest.clientruntime.2.3.18.nupkg.sha512",
+        "microsoft.rest.clientruntime.nuspec"
+      ]
+    },
+    "Microsoft.Rest.ClientRuntime.Azure/3.3.18": {
+      "sha512": "pCtem10PRQYvzRiwJVInsccsqB0NrTjW83NF3zWk1LpN3IS0AneZKq89RyogDT7mRMT1Li/mLY8N8kU6RAiK0g==",
+      "type": "package",
+      "path": "microsoft.rest.clientruntime.azure/3.3.18",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/Microsoft.Rest.ClientRuntime.Azure.dll",
+        "lib/net452/Microsoft.Rest.ClientRuntime.Azure.runtimeconfig.json",
+        "lib/net452/Microsoft.Rest.ClientRuntime.Azure.xml",
+        "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.Azure.dll",
+        "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.Azure.runtimeconfig.json",
+        "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.Azure.xml",
+        "microsoft.rest.clientruntime.azure.3.3.18.nupkg.sha512",
+        "microsoft.rest.clientruntime.azure.nuspec"
       ]
     },
     "Microsoft.SqlServer.Server/1.0.0": {
@@ -11857,6 +11963,7 @@
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.11",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 7.0.11",
       "Microsoft.AspNetCore.OpenApi >= 7.0.10",
+      "Microsoft.Azure.CognitiveServices.ContentModerator >= 2.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.11",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.11",
@@ -11919,6 +12026,10 @@
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[7.0.10, )"
+          },
+          "Microsoft.Azure.CognitiveServices.ContentModerator": {
+            "target": "Package",
+            "version": "[2.0.0, )"
           },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
